@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ThemeVerse - Customize Your Theme</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            transition: background-color 0.5s, color 0.5s;
+        }
+        .preview-box {
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            transition: all 0.5s;
+        }
+        .theme-btn {
+            transition: all 0.3s;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg bg-warning">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#"><img src="C:\Users\LIKITHA\Downloads\DALL·E 2025-03-24 15.27.55 - A modern and elegant logo for 'TypoVista', a typography showcase website. The design should feature stylish and artistic typography, with a mix of bol.webp"  width="50px" height="50px"></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="C:\Users\LIKITHA\Desktop\wt\typoVista.html">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="C:\Users\LIKITHA\Desktop\wt\FEATURES.html">FONTS</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="C:\Users\LIKITHA\Desktop\wt\17-03\b.html">ADJUST YOUR THEME</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    <div class="container py-5">
+        <h1 class="text-center">🎨 ThemeVerse - Customize Your Theme</h1>
+        <div class="row mt-4">
+            <div class="col-md-6">
+                <label for="themeMode" class="form-label">Background Mode</label>
+                <select id="themeMode" class="form-select" onchange="toggleThemeMode()">
+                    <option value="solid">Solid Color</option>
+                    <option value="gradient">Gradient</option>
+                </select>
+            </div>
+            <div class="col-md-6" id="solidColorPicker">
+                <label for="themeColor" class="form-label">Background Color</label>
+                <input type="color" id="themeColor" class="form-control" onchange="applyTheme()">
+            </div>
+            <div class="col-md-6 d-none" id="gradientColorPickers">
+                <label for="gradientColor1" class="form-label">Gradient Color 1</label>
+                <input type="color" id="gradientColor1" class="form-control" onchange="applyTheme()">
+                <label for="gradientColor2" class="form-label" class="mt-2">Gradient Color 2</label>
+                <input type="color" id="gradientColor2" class="form-control" onchange="applyTheme()">
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-md-6">
+                <label for="fontColor" class="form-label">Font Color</label>
+                <input type="color" id="fontColor" class="form-control" onchange="applyTheme()">
+            </div>
+            <div class="col-md-6">
+                <label for="fontStyle" class="form-label">Font Style</label>
+                <select id="fontStyle" class="form-select" onchange="applyTheme()">
+                    <option value="Arial, sans-serif">Sans-serif</option>
+                    <option value="Times New Roman, serif">Serif</option>
+                    <option value="Courier New, monospace">Monospace</option>
+                    <option value="Cursive, cursive">Cursive</option>
+                    <option value="Merriweather, serif">Merriweather (Serif)</option>
+                    <option value="Playfair Display, serif">Playfair Display (Serif)</option>
+                    <option value="Lora, serif">Lora (Serif)</option>
+                    <option value="Poppins, sans-serif">Poppins (Sans-Serif)</option>
+                    <option value="Montserrat, sans-serif">Montserrat (Sans-Serif)</option>
+                    <option value="Raleway, sans-serif">Raleway (Sans-Serif)</option>
+                    <option value="Dancing Script, cursive">Dancing Script (Handwritten)</option>
+                    <option value="Pacifico, cursive">Pacifico (Handwritten)</option>
+                    <option value="Indie Flower, cursive">Indie Flower (Handwritten)</option>
+                    <option value="Bungee, cursive">Bungee (Funky)</option>
+                    <option value="Lobster, cursive">Lobster (Funky)</option>
+                    <option value="Caveat, cursive">Caveat (Funky)</option>
+                    <option value="Orbitron, sans-serif">Orbitron (Tech)</option>
+                    <option value="Exo, sans-serif">Exo (Tech)</option>
+                    <option value="Audiowide, sans-serif">Audiowide (Tech)</option>
+                    <option value="Open Sans, sans-serif">Open Sans (Minimal)</option>
+                    <option value="Nunito, sans-serif">Nunito (Minimal)</option>
+                    <option value="Inter, sans-serif">Inter (Minimal)</option>
+                </select>
+            </div>
+        </div>
+        <div class="mt-4 text-center">
+            <button class="btn btn-primary theme-btn" onclick="resetTheme()">Reset Theme</button>
+        </div>
+        <div class="preview-box mt-4" id="previewBox">Theme Preview</div>
+    </div>
+    <script>
+        function applyTheme() {
+            let mode = document.getElementById("themeMode").value;
+            let fontColor = document.getElementById("fontColor").value;
+            let fontStyle = document.getElementById("fontStyle").value;
+            
+            document.body.style.color = fontColor;
+            document.body.style.fontFamily = fontStyle;
+            
+            if (mode === "solid") {
+                let bgColor = document.getElementById("themeColor").value;
+                document.body.style.background = bgColor;
+            } else {
+                let gradientColor1 = document.getElementById("gradientColor1").value;
+                let gradientColor2 = document.getElementById("gradientColor2").value;
+                document.body.style.background = `linear-gradient(to right, ${gradientColor1}, ${gradientColor2})`;
+            }
+            
+            localStorage.setItem("themeSettings", JSON.stringify({
+                mode, fontColor, fontStyle,
+                bgColor: mode === "solid" ? document.getElementById("themeColor").value : null,
+                gradientColor1: mode === "gradient" ? document.getElementById("gradientColor1").value : null,
+                gradientColor2: mode === "gradient" ? document.getElementById("gradientColor2").value : null
+            }));
+        }
+        
+        function resetTheme() {
+            localStorage.removeItem("themeSettings");
+            location.reload();
+        }
+        
+        function toggleThemeMode() {
+            let mode = document.getElementById("themeMode").value;
+            document.getElementById("solidColorPicker").classList.toggle("d-none", mode === "gradient");
+            document.getElementById("gradientColorPickers").classList.toggle("d-none", mode === "solid");
+            applyTheme();
+        }
+        
+        window.onload = function() {
+            let savedTheme = localStorage.getItem("themeSettings");
+            if (savedTheme) {
+                let { mode, fontColor, fontStyle, bgColor, gradientColor1, gradientColor2 } = JSON.parse(savedTheme);
+                document.getElementById("themeMode").value = mode;
+                document.getElementById("fontColor").value = fontColor;
+                document.getElementById("fontStyle").value = fontStyle;
+                if (mode === "solid") document.getElementById("themeColor").value = bgColor;
+                else {
+                    document.getElementById("gradientColor1").value = gradientColor1;
+                    document.getElementById("gradientColor2").value = gradientColor2;
+                }
+                toggleThemeMode();
+            }
+        }
+    </script>
+</body>
+</html>
